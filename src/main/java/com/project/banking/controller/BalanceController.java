@@ -38,17 +38,20 @@ public class BalanceController {
 				System.out.println("Enter Deposit Amount : ");
 				deposit_amount = input.nextDouble();
 			} else {
-				System.out.println("Ener Withdrawl Amount : ");
+				System.out.println("Enter Withdrawl Amount : ");
 				withdraw_amount = input.nextDouble();
 			}
 	
 			balance.setAccount_id(account_id);
 			if (transaction_type.equals("deposit")) {
 				balance.setDeposit_amount(deposit_amount);
+				;
+				bs.depositAmount(balance);
 				msg = "Your account has been credited by Rs " + deposit_amount;
 			} else {
 				if (hasBalance(account_id, withdraw_amount)) {
 					balance.setWithdraw_amount(withdraw_amount);
+					bs.withdrawAmount(balance);
 					msg = "Your account has been debited by Rs " + withdraw_amount;
 				} else {
 					msg = "You do not have sufficeint balance!";

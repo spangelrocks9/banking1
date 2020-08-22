@@ -13,7 +13,7 @@ public class BalanceDaoImpl implements BalanceDao {
 
 	public static final String SQL1 = "insert into account_balance_tbl(deposit_amount, withdraw_amount, account_id, transaction_date) values(?,?,?,?)";
 	public static final String SQL2 = "insert into account_balance_tbl(deposit_amount, withdraw_amount, account_id, transaction_date) values(?,?,?,?)";
-	public static final String GET_BALANCE_SQL = "select SUM(deposit_amount) from account_balance_tbl where account_id=?";
+	public static final String GET_BALANCE_SQL = "select IFNULL(SUM(deposit_amount),0) from account_balance_tbl where account_id=?";
 	public static final String GET_ACCOUNT_SQL = "select * from account_info_tbl where account_id=?";
 
 	@Override
